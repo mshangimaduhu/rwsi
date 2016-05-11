@@ -1,0 +1,51 @@
+select
+a.Organization_Id,
+b.Organization_Name,
+a.Organization_Category,
+c.Organization_Category_Name,
+c.Organization_Category_ShortName,
+b.Region_Id,
+d.Region_Name,
+b.District_id,
+e.District_Name,
+b.RegMap,
+b.Latitude,
+b.Longitude,
+d.Latitude as Region_Latitude,
+d.Longitude as Region_Longitude,
+a.Incident_Id,
+a.Incident_Category,
+f.Category_Name,
+a.Incident_Date
+
+
+from
+
+
+`tbl_incidents_details` a,
+`tbl_org_mda` b,
+`tbl_organization_category` c,
+`tbl_region_details` d,
+`tbl_district_details` e,
+`tbl_incidents_category` f
+
+where
+
+(a.Organization_Id=b.Organization_Id and
+
+a.Organization_Category=c.Organization_Category_Id)
+
+and
+
+(a.Organization_Id=b.Organization_Id and
+
+b.Region_Id=d.Region_Id)
+
+and
+
+(a.Organization_Id=b.Organization_Id and
+
+)b.Region_Id=e.Region_Id and  b.District_id=e.District_Id))
+
+and
+(a.Incident_Category=f.Category_Name)
